@@ -30,6 +30,7 @@ function Stop-VisualStudio {
     }
 
     if($reloadVS){
+        Start-Sleep -s 1
         Start-Process $visualStudioPath
     }
 }

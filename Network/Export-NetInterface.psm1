@@ -11,6 +11,8 @@
 function Export-NetInterface {
     [cmdletbinding()]
     Param(
+        [Alias('file')]
+        [string] $exportXMLFile
     )
     #todo
 }
