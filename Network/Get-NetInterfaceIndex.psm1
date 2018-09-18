@@ -29,6 +29,8 @@ function Get-NetInterfaceIndex {
         elseif($networkType -in ('WLAN', 'WIFI')){
             $phrase = $defaultWlanConnectionPhrase
         }
+
+        Write-Verbose "Searching $indexType index for the phrase: $phrase..."
     }
     
     Process {
@@ -36,17 +38,20 @@ function Get-NetInterfaceIndex {
             (wmic nic get Index,InterfaceIndex,NetConnectionID `
             | Select-String $phrase | Select -First 1).ToString().Trim()
 
+        Write-Verbose "Phrase found in: $indexesStr"
         $cardIndex = $indexesStr.Substring(0,2)
-        $interfaceIndex = $indexesStr.Substring(7,2)        
+        $interfaceIndex = $indexesStr.Substring(7,2)       
     }
 
     End {
         if($indexType -in ('card', 'c', 'nic')){
+            Write-Verbose "Found index: $cardIndex"
             return [int]$cardIndex
         }
         elseif($indexType -in ('interface', 'i', 'iface')){
+            Write-Verbose "Found index: $interfaceIndex"
             return [int]$interfaceIndex
-        }    
+        }
     }
 }
 

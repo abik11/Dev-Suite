@@ -33,7 +33,7 @@ function Set-NetInterface {
         elseif($networkType -in ('WLAN', 'WIFI')){
             $index = Get-NetInterfaceIndex interface wlan
         }
-    }    
+    }
 
     Process {
         if($config -eq "address"){
@@ -50,9 +50,9 @@ function Set-NetInterface {
                 netsh interface ipv4 set dnsservers $index source=dhcp
             }
             else {
-                netsh interface ipv4 set dns $index static $addr1
+                netsh interface ipv4 set dnsservers $index static $addr1
                 if($addr2){
-                    netsh interface ipv4 set dns $index static $addr2 index=2
+                    netsh interface ipv4 add dnsserver $index $addr2 index=2
                 }
             }
         }
