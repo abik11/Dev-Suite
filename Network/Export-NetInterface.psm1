@@ -4,7 +4,7 @@
     .DESCRIPTION
     This function ...
     .EXAMPLE
-    exnic
+    exnic config.xml
     .NOTES
      author: Albert
 #>
