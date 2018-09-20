@@ -36,7 +36,7 @@ function Get-NetInterfaceIndex {
     Process {
         $indexesStr = `
             (wmic nic get Index,InterfaceIndex,NetConnectionID `
-            | Select-String $phrase | Select -First 1).ToString().Trim()
+            | Select-String $phrase | Select-Object -First 1).ToString().Trim()
 
         Write-Verbose "Phrase found in: $indexesStr"
         $cardIndex = $indexesStr.Substring(0,2)
