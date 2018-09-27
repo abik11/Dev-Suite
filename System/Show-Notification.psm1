@@ -7,7 +7,7 @@
     NotifyIcon class (WinForms).
     .EXAMPLE
     Show-Notification 'Little message' 'Hello world! This is a message!'
-    Show-Notification 'Little message' 'Hello world! This is a message!' Warning 10
+    Show-Notification 'Little message' 'Hello world! This is a message!' 10 Warning
     .NOTES
      author: Albert
 #>
@@ -16,8 +16,8 @@ function Show-Notification {
     Param(
         [string] $title,
         [string] $message,
-        [string] $type = 'Info',
-        [int] $timeout = 5
+        [int] $timeout = 5,
+        [string] $type = 'Info'
     )
 
     Add-Type -AssemblyName System.Windows.Forms
