@@ -17,15 +17,18 @@ function Show-Notification {
         [string] $title,
         [string] $message,
         [int] $timeout = 5,
-        [string] $type = 'Info'
+        [string] $type = 'Info',
+        [switch] $force = $false
     )
 
     Add-Type -AssemblyName System.Windows.Forms
     $notification = New-Object System.Windows.Forms.NotifyIcon
 
-    Write-Verbose "Registering event handlers that will dipose NotifyIcon"
-    $eventsTable = @{'BalloonTipClosed'='NotificationClosed'; 'BalloonTipClicked'='NotificationClicked'}
-    Register-DisposeEventSubscriber $notification $eventsTable       
+    if(-not($force)){
+        Write-Verbose "Registering event handlers that will dipose NotifyIcon"
+        $eventsTable = @{'BalloonTipClosed'='NotificationClosed'; 'BalloonTipClicked'='NotificationClicked'}
+        Register-DisposeEventSubscriber $notification $eventsTable       
+    }
 
     Write-Verbose "Setting the icon as the Powershell's icon"
     $path = Get-Process -id $pid | Select-Object -ExpandProperty Path
@@ -46,6 +49,12 @@ function Show-Notification {
     $notification.BalloonTipTitle = $title
     $notification.Visible = $true
     $notification.ShowBalloonTip($timeout * 1000)
+
+    if($force){
+        Write-Verbose "Waiting $timeout seconds to dispose notification"
+        Start-Sleep -S $timeout
+        $notification.Dispose()
+    }
 }
 
 function Register-DisposeEventSubscriber($object, $eventsTable){
