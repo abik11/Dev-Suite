@@ -23,6 +23,7 @@ function Get-Screenshot {
     $graphics = [System.Drawing.Graphics]::FromImage($bmp)
     $graphics.CopyFromScreen($bounds.Location, [System.Drawing.Point]::Empty, $bounds.size)
 
+    [System.IO.Directory]::SetCurrentDirectory((Get-Location).ProviderPath)
     $bmp.Save($path)
     $graphics.Dispose()
     $bmp.Dispose()
