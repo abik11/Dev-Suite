@@ -7,6 +7,9 @@
     .EXAMPLE
     clsvss .\MyTurboSolution\
     clsvss .
+    
+    To clear all solutions in a directory:
+    ls | % { Clear-VSSolution $_ }
     .NOTES
      author: Albert
 #>
