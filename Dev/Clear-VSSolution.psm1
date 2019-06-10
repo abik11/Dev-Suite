@@ -26,7 +26,8 @@ function Clear-VSSolution {
     Process {
         Set-Location $solutionDirectory
         Remove-Item packages, .vs -Force -Recurse -ErrorAction SilentlyContinue
-        dir bin, obj -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem bin, obj -Recurse | 
+            Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
     }
     
     End {
@@ -36,4 +37,5 @@ function Clear-VSSolution {
 
 New-Alias -Name Clear-Solution -Value Clear-VSSolution
 New-Alias -Name clsvss -Value Clear-VSSolution
+New-Alias -Name clsvs -Value Clear-VSSolution
 Export-ModuleMember -Alias * -Function *
