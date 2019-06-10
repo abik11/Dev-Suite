@@ -2,8 +2,9 @@
     .SYNOPSIS
     Clear-VSSolution
     .DESCRIPTION
-    This function clears Visual Studio solution from packages, .vs and all 
-    bin and obj directories from each project.
+    This function removes packages and .vs directories from given Visual Studio
+    solution and removes bin and obj directories from projects inside of the
+    solution.
     .EXAMPLE
     clsvss .\MyTurboSolution\
     clsvss .
