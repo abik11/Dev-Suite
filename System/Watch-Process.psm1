@@ -2,7 +2,10 @@
     .SYNOPSIS
     Watch-Process
     .DESCRIPTION
-    This function ...
+    This function finds a process and waits for it to exit by calling its
+    WaitForExit method. When the process exits, the function tries to respawn
+    it by running whatever it will find as process' Path property. It does it
+    over and over again in an infinite loop.
     .EXAMPLE
     wproc Calculator
     .NOTES
