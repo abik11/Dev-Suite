@@ -18,7 +18,7 @@ function Copy-ChangedFilesFromGit {
     [cmdletbinding()]
     param(
         [string] $repo,
-        [string] $output = "$home\Desktop\changes-backup\",
+        [string] $output = "$home\Desktop\changes-backup",
         [string] $index = "$output\index.txt"
     )
  
@@ -28,7 +28,7 @@ function Copy-ChangedFilesFromGit {
     }
  
     Write-Verbose "Creating output directory"
-    New-Item -Path $output -ItemType Directory
+    New-Item -Path $output -ItemType Directory | Out-Null
  
     $gitOutput = git --git-dir="$repo\.git" status --porcelain
     $files = $gitOutput -replace "/","\" -split "`n"
