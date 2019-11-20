@@ -1,12 +1,12 @@
  <#
     .SYNOPSIS
-    Get-Screenshot
+    Get-PrintScreen
     .EXAMPLE
-    Get-Screenshot 1600 900 C:\img.png
+    Get-PrintScreen 1600 900 C:\img.png
     .NOTES
      author: Albert
 #>
-function Get-Screenshot {
+function Get-PrintScreen {
     [cmdletbinding()]
     Param(
         [int] $width,
