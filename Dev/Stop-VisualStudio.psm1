@@ -21,24 +21,18 @@ function Stop-VisualStudio {
         [string] $visualStudioPath = $vsFullPath
     )
 
-    Stop-ExistingProcess "devenv"
+    Stop-Process "devenv" -ErrorAction SilentlyContinue
     
     if($cordova){
-        #Stop-ExistingProcess "conhost"
-        Stop-ExistingProcess "java"
-        Stop-ExistingProcess "Node"
+        #Stop-Process "conhost" -ErrorAction SilentlyContinue
+        Stop-Process "java" -ErrorAction SilentlyContinue
+        Stop-Process "Node" -ErrorAction SilentlyContinue
     }
 
     if($reloadVS){
         Start-Sleep -s 1
         Start-Process $visualStudioPath
     }
-}
-
-function Stop-ExistingProcess ($processName) {
-    if(Get-Process | Where-Object { $_.Name -eq $processName }){
-        Stop-Process -Name $processName
-    }    
 }
 
 New-Alias -Name Kill-VisualStudio -Value Stop-VisualStudio
