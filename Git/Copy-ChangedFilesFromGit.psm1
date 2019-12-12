@@ -33,7 +33,7 @@ function Copy-ChangedFilesFromGit {
     $gitOutput = git --git-dir="$repo\.git" status --porcelain
     $files = $gitOutput -replace "/","\" -split "`n"
     $files | ForEach-Object {
-        if($_[1] -ne 'D'){
+        if($_[0] -ne 'D' -and $_[0] -ne 'R'){
             $file = Get-ChildItem "$repo\*$($_.Substring(3))" | Select-Object -ExpandProperty FullName
             Write-Verbose "Copying: $file to: $output"
             Copy-Item $file -Destination $output
