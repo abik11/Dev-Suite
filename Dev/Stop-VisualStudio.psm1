@@ -21,12 +21,12 @@ function Stop-VisualStudio {
         [string] $visualStudioPath = $vsFullPath
     )
 
-    Stop-Process "devenv" -ErrorAction SilentlyContinue
+    Get-Process devenv -ErrorAction SilentlyContinue | Stop-Process
     
     if($cordova){
-        #Stop-Process "conhost" -ErrorAction SilentlyContinue
-        Stop-Process "java" -ErrorAction SilentlyContinue
-        Stop-Process "Node" -ErrorAction SilentlyContinue
+        #Get-Process conhost -ErrorAction SilentlyContinue | Stop-Process
+        Get-Process java -ErrorAction SilentlyContinue | Stop-Process
+        Get-Process Node -ErrorAction SilentlyContinue | Stop-Process        
     }
 
     if($reloadVS){
