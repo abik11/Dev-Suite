@@ -33,6 +33,7 @@ function Get-MonthWorkingHours {
         }
     }
  
+    Write-Warning "If you had some vacations or there were some holidays in your country the number working hours should be smaller."
     return $workingDays * 8
 }
 
