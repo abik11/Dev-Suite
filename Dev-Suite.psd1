@@ -66,6 +66,7 @@ CLRVersion = '4.0.30319.42000'
 NestedModules = @('.\Variables.psm1',
                 '.\DateFunctions.psm1',
                 '.\ConvertTo-ExcelReadableCSV.psm1',
+                '.\Compare-Lists.psm1',
                 '.\Console\Set-PSConsoleSize.psm1',
                 '.\Console\Set-PSConsoleRegistry.psm1',
                 '.\Console\Set-PSRegistryProperty.psm1',
