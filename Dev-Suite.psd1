@@ -89,7 +89,9 @@ NestedModules = @('.\Variables.psm1',
                 '.\Network\Get-NetInterfaceIndex.psm1',
                 '.\Network\Get-NetInterfaceConfig.psm1',
                 '.\Network\Connect-NetInterface.psm1',
-                '.\Network\Set-NetInterface.psm1')
+                '.\Network\Set-NetInterface.psm1',
+                '.\DB\Measure-Query.psm1',
+                '.\DB\Measure-AverageQueryTime.psm1')
 
 # Functions to export from this module
 FunctionsToExport = '*'
